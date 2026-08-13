@@ -62,6 +62,13 @@ Search results are displayed in a responsive card-based interface, allowing user
 
 - Apple iTunes Search API
 
+### Development Tools
+
+- Git
+- GitHub
+- npm
+- Visual Studio Code
+
 ---
 
 ## 🔐 Authentication & Request Security
@@ -72,14 +79,14 @@ The request flow is:
 
 1. The React application requests a JWT from the Express backend.
 2. The backend generates a short-lived token.
-3. The frontend includes the token in the `Authorization` header.
+3. The frontend includes the token in the Authorization header.
 4. Express middleware verifies the token.
 5. If the token is valid, the search request continues.
 6. The backend retrieves the requested data from Apple's iTunes Search API.
 
 This demonstrates how middleware can be used to protect API routes in an Express application.
 
-> **Note:** The JWT implementation in this project is intended to demonstrate API request authentication and is not a full user authentication system.
+> Note: The JWT implementation in this project is intended to demonstrate API request authentication and is not a full user authentication system.
 
 ---
 
@@ -87,12 +94,17 @@ This demonstrates how middleware can be used to protect API routes in an Express
 
 The backend uses environment variables to store configuration values that should not be hard-coded directly into the application.
 
-The `dotenv` package is used to load environment variables from a local `.env` file.
+The dotenv package is used to load environment variables from a local .env file.
 
-Create a `.env` file inside the `server` directory:
+Create a .env file inside the server directory.
 
-```env
+Add your JWT secret:
+
 JWT_SECRET=your-secret-key
+
+The .env file is used locally and should not be committed to GitHub.
+
+Make sure .env is included in .gitignore.
 
 ---
 
@@ -102,7 +114,6 @@ The React frontend does not communicate directly with Apple's iTunes Search API.
 
 Instead, requests follow this architecture:
 
-```text
 User
   ↓
 React Frontend
@@ -118,7 +129,6 @@ Express Backend
 React Frontend
   ↓
 Search Results
-```
 
 The Express backend acts as an intermediary between the frontend and the external API.
 
@@ -128,7 +138,7 @@ The backend accepts a search term and selected media type, sends the request to 
 
 ## 🧠 Application State
 
-The React application manages several pieces of state using React's `useState` hook:
+The React application manages several pieces of state using React's useState hook:
 
 - Search results
 - Favourites
@@ -139,7 +149,8 @@ Favourites are stored in the application's React state and are therefore tempora
 
 ---
 
-```text
+## 🏗️ Project Structure
+
 itunes-search-app/
 │
 ├── client/
@@ -176,45 +187,45 @@ itunes-search-app/
 
 ### 1. Clone the repository
 
-```bash
 git clone https://github.com/DyllanMeissenheimer23/itunes-search-app.git
-```
 
 Navigate into the project:
 
-```bash
 cd itunes-search-app
-```
 
 ### 2. Install backend dependencies
 
 Navigate to the server directory:
 
-```bash
 cd server
-```
 
 Install the required packages:
 
-```bash
 npm install
-```
 
-### 3. Install frontend dependencies
+### 3. Configure environment variables
+
+Inside the server directory, create a file named .env.
+
+Add your JWT secret:
+
+JWT_SECRET=your-secret-key
+
+The .env file is used locally and should not be committed to GitHub.
+
+Make sure .env is included in .gitignore.
+
+### 4. Install frontend dependencies
 
 Open a second terminal window.
 
 Navigate to the client directory:
 
-```bash
 cd client
-```
 
 Install the required packages:
 
-```bash
 npm install
-```
 
 ---
 
@@ -224,31 +235,23 @@ The frontend and backend need to run separately.
 
 ### Start the Backend
 
-From the `server` directory:
+From the server directory:
 
-```bash
 npm start
-```
 
 The Express server runs on:
 
-```text
 http://localhost:3001
-```
 
 ### Start the Frontend
 
-From the `client` directory:
+From the client directory:
 
-```bash
 npm start
-```
 
 The React application runs on:
 
-```text
 http://localhost:3000
-```
 
 Open the frontend URL in your browser to use the application.
 
@@ -256,7 +259,6 @@ Open the frontend URL in your browser to use the application.
 
 ## 🔄 Application Workflow
 
-```text
 1. User enters a search term
         ↓
 2. User selects a media type
@@ -274,7 +276,6 @@ Open the frontend URL in your browser to use the application.
 8. Results are displayed to the user
         ↓
 9. User can add or remove favourites
-```
 
 ---
 
@@ -283,6 +284,8 @@ Open the frontend URL in your browser to use the application.
 The application uses React Bootstrap and Bootstrap's responsive grid system to provide a layout that adapts across different screen sizes.
 
 Search results and favourites are presented in separate responsive panels, with media cards adjusting according to the available screen width.
+
+The interface also includes responsive styling for smaller screens.
 
 ---
 
@@ -299,6 +302,48 @@ The application supports searches across the following media types:
 - Short Film
 - Software
 - eBook
+
+---
+
+## 🔌 Backend API Routes
+
+The Express backend exposes the following routes.
+
+### Generate JWT
+
+GET /api/token
+
+Generates a short-lived JWT used to authenticate search requests.
+
+### Search iTunes
+
+GET /api/search
+
+Requires a valid JWT in the Authorization header.
+
+Example:
+
+GET /api/search?term=Coldplay&media=music
+
+Expected authorization format:
+
+Authorization: Bearer <token>
+
+---
+
+## 🧪 Error Handling
+
+The application includes basic error handling for common request problems.
+
+Examples include:
+
+- Missing search terms
+- Missing authentication tokens
+- Invalid or expired JWTs
+- Failed iTunes API requests
+- Unexpected backend errors
+
+The frontend displays appropriate error messages when requests cannot be completed successfully.
 
 ---
 
@@ -319,7 +364,7 @@ Potential improvements include:
 
 ## 👨‍💻 Author
 
-**Dyllan Meissenheimer**
+Dyllan Meissenheimer
 
 Postgraduate Diploma in Information Technology Management
 
@@ -338,7 +383,9 @@ It demonstrates practical experience working with:
 - Node.js
 - Express.js
 - REST APIs
-- JWT
+- JWT authentication
+- dotenv and environment variables
 - Responsive web development
 - Frontend/backend integration
 - Git and GitHub
+- npm
