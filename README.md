@@ -2,7 +2,7 @@
 
 A full-stack web application built with React and Express.js that allows users to search the Apple iTunes catalogue across multiple media types and manage a temporary favourites list.
 
-The project demonstrates frontend and backend integration, REST API communication, JWT-based request authentication, responsive UI development, and state management using React.
+The project demonstrates frontend and backend integration, REST API communication, JWT-based request authentication, environment-based configuration, responsive UI development, and state management using React.
 
 ---
 
@@ -36,6 +36,7 @@ Search results are displayed in a responsive card-based interface, allowing user
 - Responsive layout using React Bootstrap
 - Express backend API
 - JWT-protected search endpoint
+- Environment-based configuration using dotenv
 
 ---
 
@@ -55,6 +56,7 @@ Search results are displayed in a responsive card-based interface, allowing user
 - Express.js
 - JSON Web Token (JWT)
 - CORS
+- dotenv
 
 ### External API
 
@@ -78,6 +80,19 @@ The request flow is:
 This demonstrates how middleware can be used to protect API routes in an Express application.
 
 > **Note:** The JWT implementation in this project is intended to demonstrate API request authentication and is not a full user authentication system.
+
+---
+
+## 🔒 Environment Configuration
+
+The backend uses environment variables to store configuration values that should not be hard-coded directly into the application.
+
+The `dotenv` package is used to load environment variables from a local `.env` file.
+
+Create a `.env` file inside the `server` directory:
+
+```env
+JWT_SECRET=your-secret-key
 
 ---
 
@@ -126,7 +141,6 @@ Favourites are stored in the application's React state and are therefore tempora
 
 ## 🏗️ Project Structure
 
-```text
 itunes-search-app/
 │
 ├── client/
@@ -156,7 +170,6 @@ itunes-search-app/
 │
 ├── .gitignore
 └── README.md
-```
 
 ---
 
@@ -302,7 +315,6 @@ Potential improvements include:
 - Persistent favourites using browser storage
 - Dark mode
 - Improved API error handling
-- Production-ready environment configuration
 
 ---
 
