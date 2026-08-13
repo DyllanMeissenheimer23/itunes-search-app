@@ -1,42 +1,54 @@
 # 🎵 iTunes Search Application
 
-## Overview
+A full-stack web application built with React and Express.js that allows users to search the Apple iTunes catalogue across multiple media types and manage a temporary favourites list.
 
-The iTunes Search Application is a full-stack web application developed using React and Express.js. It allows users to search the Apple iTunes catalogue for various types of media, including music, movies, podcasts, audiobooks, TV shows, software, eBooks, and short films.
-
-The application uses JWT (JSON Web Token) authentication to secure communication between the React frontend and Express backend before retrieving data from the Apple iTunes Search API.
+The project demonstrates frontend and backend integration, REST API communication, JWT-based request authentication, responsive UI development, and state management using React.
 
 ---
 
-## Purpose
+## 📌 Overview
 
-The purpose of this application is to demonstrate the development of a secure full-stack web application using React and Express.js. Users can search the Apple iTunes catalogue by media type, view search results, and manage a temporary favourites list. The application showcases REST API integration, JWT authentication, responsive interface design, and modern JavaScript development practices.
+The iTunes Search Application provides a simple interface for searching the Apple iTunes catalogue for music, movies, podcasts, audiobooks, TV shows, software, eBooks, and other supported media types.
 
-## Features
+The application uses a React frontend and an Express.js backend. Search requests are sent from the frontend to the Express API, where the request is authenticated using a JSON Web Token before the backend retrieves results from Apple's iTunes Search API.
+
+Search results are displayed in a responsive card-based interface, allowing users to view media information and add or remove items from a temporary favourites list.
+
+---
+
+## ✨ Features
 
 - Search the Apple iTunes catalogue
-- Filter searches by media type
-- Secure backend API using JWT authentication
-- Display search results including:
-  - Album artwork
-  - Album name
+- Search across multiple media types
+- Display search results in a responsive interface
+- Display:
+  - Album or collection artwork
+  - Collection or track name
   - Artist name
+  - Media type
   - Release date
-- Add items to a favourites list
-- Remove items from the favourites list
-- Responsive user interface built with React Bootstrap
-- Scrollable search results and favourites panels
+- Add items to a temporary favourites list
+- Remove items from favourites
+- Prevent duplicate favourites
+- Display the number of search results
+- Display the number of saved favourites
+- Loading state while searching
+- Error handling for unsuccessful requests
+- Responsive layout using React Bootstrap
+- Express backend API
+- JWT-protected search endpoint
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 ### Frontend
 
 - React
+- JavaScript (ES6)
 - React Bootstrap
 - Bootstrap 5
-- JavaScript (ES6)
+- CSS
 
 ### Backend
 
@@ -51,162 +63,44 @@ The purpose of this application is to demonstrate the development of a secure fu
 
 ---
 
-## Project Structure
+## 🔐 Authentication & Request Security
 
-```
-iTunes-Search-App/
-│
-├── client/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── SearchBar.js
-│   │   ├── services/
-│   │   │   └── api.js
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   ├── index.js
-│   │   └── index.css
-│   ├── package.json
-│   └── package-lock.json
-│
-├── server/
-│   ├── middleware/
-│   │   └── authMiddleware.js
-│   ├── routes/
-│   │   └── searchRoutes.js
-│   ├── utils/
-│   │   └── itunesApi.js
-│   ├── server.js
-│   ├── package.json
-│   └── package-lock.json
-│
-├── .gitignore
-└── README.md
-```
+The application uses JSON Web Tokens (JWT) to authenticate search requests between the React frontend and Express backend.
+
+The request flow is:
+
+1. The React application requests a JWT from the Express backend.
+2. The backend generates a short-lived token.
+3. The frontend includes the token in the `Authorization` header.
+4. The Express middleware verifies the token.
+5. If the token is valid, the search request continues.
+6. The backend retrieves the requested data from the Apple iTunes Search API.
+
+This demonstrates how middleware can be used to protect API routes in an Express application.
+
+> **Note:** The JWT implementation in this project is intended to demonstrate API request authentication and is not a full user authentication system.
 
 ---
 
-## Installation
+## 🔗 API Integration
 
-### Clone the repository
+The React frontend does not communicate directly with Apple's iTunes Search API.
 
-```bash
-git clone <repository-url>
-```
+Instead, requests follow this architecture:
 
-Navigate to the project directory.
-
----
-
-### Install backend dependencies
-
-```bash
-cd server
-npm install
-```
-
----
-
-### Install frontend dependencies
-
-Open a second terminal window.
-
-```bash
-cd client
-npm install
-```
-
----
-
-## Running the Application
-
-### Start the backend
-
-```bash
-cd server
-npm start
-```
-
-The backend will run on:
-
-```
-http://localhost:3001
-```
-
----
-
-### Start the frontend
-
-Open another terminal window.
-
-```bash
-cd client
-npm start
-```
-
-The frontend will run on:
-
-```
-http://localhost:3000
-```
-
----
-
-## Application Workflow
-
-1. The user enters a search term.
-2. The user selects a media type.
-3. The React frontend requests data from the Express backend.
-4. The backend validates the JWT.
-5. The backend retrieves data from the Apple iTunes Search API.
-6. Search results are displayed in the application.
-7. Users can add and remove items from their favourites list during the current session.
-
----
-
-## Supported Media Types
-
-- All
-- Music
-- Movie
-- Podcast
-- Audiobook
-- TV Show
-- Short Film
-- Software
-- eBook
-
----
-
-## Future Improvements
-
-Possible enhancements include:
-
-- User authentication
-- Persistent favourites using a database
-- Search history
-- Pagination
-- Advanced filtering and sorting
-- Dark mode
-
----
-
-## Author
-
-**Dyllan Meissenheimer**
-
-Postgraduate Diploma in Information Technology Management
-
-Aspiring Full Stack Web Developer
-
----
-
-## Acknowledgements
-
-- HyperionDev
-- Apple iTunes Search API
-- React
-- Express.js
-- Bootstrap
-- Node.js
+```text
+User
+  ↓
+React Frontend
+  ↓
+Express Backend
+  ↓
+JWT Verification
+  ↓
+Apple iTunes Search API
+  ↓
+Express Backend
+  ↓
+React Frontend
+  ↓
+Search Results
