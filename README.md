@@ -21,12 +21,11 @@ Search results are displayed in a responsive card-based interface, allowing user
 - Search the Apple iTunes catalogue
 - Search across multiple media types
 - Display search results in a responsive interface
-- Display:
-  - Album or collection artwork
-  - Collection or track name
-  - Artist name
-  - Media type
-  - Release date
+- Display album or collection artwork
+- Display collection or track name
+- Display artist name
+- Display media type
+- Display release date
 - Add items to a temporary favourites list
 - Remove items from favourites
 - Prevent duplicate favourites
@@ -72,9 +71,9 @@ The request flow is:
 1. The React application requests a JWT from the Express backend.
 2. The backend generates a short-lived token.
 3. The frontend includes the token in the `Authorization` header.
-4. The Express middleware verifies the token.
+4. Express middleware verifies the token.
 5. If the token is valid, the search request continues.
-6. The backend retrieves the requested data from the Apple iTunes Search API.
+6. The backend retrieves the requested data from Apple's iTunes Search API.
 
 This demonstrates how middleware can be used to protect API routes in an Express application.
 
@@ -104,3 +103,231 @@ Express Backend
 React Frontend
   ↓
 Search Results
+```
+
+The Express backend acts as an intermediary between the frontend and the external API.
+
+The backend accepts a search term and selected media type, sends the request to Apple's iTunes Search API, and returns the search results to the React application.
+
+---
+
+## 🧠 Application State
+
+The React application manages several pieces of state using React's `useState` hook:
+
+- Search results
+- Favourites
+- Loading status
+- Error messages
+
+Favourites are stored in the application's React state and are therefore temporary. They are not currently stored in a database or browser storage.
+
+---
+
+## 🏗️ Project Structure
+
+```text
+itunes-search-app/
+│
+├── client/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── SearchBar.js
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   ├── App.js
+│   │   ├── App.css
+│   │   ├── index.js
+│   │   └── index.css
+│   ├── package.json
+│   └── package-lock.json
+│
+├── server/
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   ├── routes/
+│   │   └── searchRoutes.js
+│   │   ├── utils/
+│   │   │   └── itunesApi.js
+│   ├── server.js
+│   ├── package.json
+│   └── package-lock.json
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/DyllanMeissenheimer23/itunes-search-app.git
+```
+
+Navigate into the project:
+
+```bash
+cd itunes-search-app
+```
+
+### 2. Install backend dependencies
+
+Navigate to the server directory:
+
+```bash
+cd server
+```
+
+Install the required packages:
+
+```bash
+npm install
+```
+
+### 3. Install frontend dependencies
+
+Open a second terminal window.
+
+Navigate to the client directory:
+
+```bash
+cd client
+```
+
+Install the required packages:
+
+```bash
+npm install
+```
+
+---
+
+## 🚀 Running the Application
+
+The frontend and backend need to run separately.
+
+### Start the Backend
+
+From the `server` directory:
+
+```bash
+npm start
+```
+
+The Express server runs on:
+
+```text
+http://localhost:3001
+```
+
+### Start the Frontend
+
+From the `client` directory:
+
+```bash
+npm start
+```
+
+The React application runs on:
+
+```text
+http://localhost:3000
+```
+
+Open the frontend URL in your browser to use the application.
+
+---
+
+## 🔄 Application Workflow
+
+```text
+1. User enters a search term
+        ↓
+2. User selects a media type
+        ↓
+3. React requests a JWT from Express
+        ↓
+4. React sends the search request with the JWT
+        ↓
+5. Express verifies the JWT
+        ↓
+6. Express requests data from the iTunes Search API
+        ↓
+7. Results are returned to React
+        ↓
+8. Results are displayed to the user
+        ↓
+9. User can add or remove favourites
+```
+
+---
+
+## 📱 Responsive Design
+
+The application uses React Bootstrap and Bootstrap's responsive grid system to provide a layout that adapts across different screen sizes.
+
+Search results and favourites are presented in separate responsive panels, with media cards adjusting according to the available screen width.
+
+---
+
+## 🎯 Supported Media Types
+
+The application supports searches across the following media types:
+
+- All
+- Music
+- Movie
+- Podcast
+- Audiobook
+- TV Show
+- Short Film
+- Software
+- eBook
+
+---
+
+## 🔮 Future Improvements
+
+Potential improvements include:
+
+- User registration and login
+- Persistent favourites using a database
+- Search history
+- Pagination
+- Advanced filtering and sorting
+- Persistent favourites using browser storage
+- Dark mode
+- Improved API error handling
+- Production-ready environment configuration
+
+---
+
+## 👨‍💻 Author
+
+**Dyllan Meissenheimer**
+
+Postgraduate Diploma in Information Technology Management
+
+Aspiring Full Stack Web Developer
+
+---
+
+## 📚 Project Context
+
+This project was developed as part of the HyperionDev Full Stack Web Development Bootcamp and represents my final full-stack capstone project.
+
+It demonstrates practical experience working with:
+
+- React
+- JavaScript
+- Node.js
+- Express.js
+- REST APIs
+- JWT
+- Responsive web development
+- Frontend/backend integration
+- Git and GitHub
