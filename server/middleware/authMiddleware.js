@@ -1,9 +1,8 @@
-// Secret key used to verify JWTs.
-const JWT_SECRET = process.env.JWT_SECRET;
+// Import the JSON Web Token package
+const jwt = require("jsonwebtoken");
 
 // Secret key used to verify JWTs.
-// In a production application, this should be stored in an environment variable.
-const JWT_SECRET = "capstone-secret-key";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 /**
  * Middleware to verify that a valid JWT is included
