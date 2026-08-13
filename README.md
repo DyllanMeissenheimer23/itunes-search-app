@@ -148,8 +148,8 @@ itunes-search-app/
 │   │   └── authMiddleware.js
 │   ├── routes/
 │   │   └── searchRoutes.js
-│   │   ├── utils/
-│   │   │   └── itunesApi.js
+│   ├── utils/
+│   │   └── itunesApi.js
 │   ├── server.js
 │   ├── package.json
 │   └── package-lock.json
