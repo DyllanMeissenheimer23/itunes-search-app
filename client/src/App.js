@@ -220,6 +220,11 @@ function App() {
                                     item.trackId ||
                                     item.collectionId;
 
+                                const title =
+                                    item.trackName ||
+                                    item.collectionName ||
+                                    "Untitled";
+
                                 return (
 
                                     <Col
@@ -234,13 +239,13 @@ function App() {
                                             <Card.Img
                                                 variant="top"
                                                 src={item.artworkUrl100}
-                                                alt={item.collectionName}
+                                                alt={title}
                                             />
 
                                             <Card.Body className="d-flex flex-column">
 
                                                 <Card.Title>
-                                                    {item.collectionName}
+                                                    {title}
                                                 </Card.Title>
 
                                                 <Badge
@@ -258,7 +263,7 @@ function App() {
 
                                                     <br />
 
-                                                    {item.artistName}
+                                                    {item.artistName || "Unknown Artist"}
 
                                                 </Card.Text>
 
@@ -311,7 +316,7 @@ function App() {
 
                             })}
 
-                                                  </Row>
+                        </Row>
 
                     </div>
 
@@ -358,6 +363,11 @@ function App() {
                                 item.trackId ||
                                 item.collectionId;
 
+                            const title =
+                                item.trackName ||
+                                item.collectionName ||
+                                "Untitled";
+
                             return (
 
                                 <Card
@@ -373,7 +383,7 @@ function App() {
 
                                                 <Card.Img
                                                     src={item.artworkUrl100}
-                                                    alt={item.collectionName}
+                                                    alt={title}
                                                     className="rounded"
                                                 />
 
@@ -387,7 +397,7 @@ function App() {
                                                         fontSize: "1rem"
                                                     }}
                                                 >
-                                                    {item.collectionName}
+                                                    {title}
                                                 </Card.Title>
 
                                                 <Badge
@@ -405,7 +415,7 @@ function App() {
                                                         fontSize: "0.9rem"
                                                     }}
                                                 >
-                                                    {item.artistName}
+                                                    {item.artistName || "Unknown Artist"}
                                                 </Card.Text>
 
                                                 <Button
@@ -460,7 +470,6 @@ function App() {
             </footer>
 
         </Container>
-
     );
 }
 
