@@ -100,7 +100,7 @@ Create a .env file inside the server directory.
 
 Add your JWT secret:
 
-JWT_SECRET=your-secret-key
+    JWT_SECRET=your-secret-key
 
 The .env file is used locally and should not be committed to GitHub.
 
@@ -114,21 +114,21 @@ The React frontend does not communicate directly with Apple's iTunes Search API.
 
 Instead, requests follow this architecture:
 
-User
-  ↓
-React Frontend
-  ↓
-Express Backend
-  ↓
-JWT Verification
-  ↓
-Apple iTunes Search API
-  ↓
-Express Backend
-  ↓
-React Frontend
-  ↓
-Search Results
+    User
+      ↓
+    React Frontend
+      ↓
+    Express Backend
+      ↓
+    JWT Verification
+      ↓
+    Apple iTunes Search API
+      ↓
+    Express Backend
+      ↓
+    React Frontend
+      ↓
+    Search Results
 
 The Express backend acts as an intermediary between the frontend and the external API.
 
@@ -151,35 +151,35 @@ Favourites are stored in the application's React state and are therefore tempora
 
 ## 🏗️ Project Structure
 
-itunes-search-app/
-│
-├── client/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── SearchBar.js
-│   │   ├── services/
-│   │   │   └── api.js
-│   │   ├── App.js
-│   │   ├── App.css
-│   │   ├── index.js
-│   │   └── index.css
-│   ├── package.json
-│   └── package-lock.json
-│
-├── server/
-│   ├── middleware/
-│   │   └── authMiddleware.js
-│   ├── routes/
-│   │   └── searchRoutes.js
-│   ├── utils/
-│   │   └── itunesApi.js
-│   ├── server.js
-│   ├── package.json
-│   └── package-lock.json
-│
-├── .gitignore
-└── README.md
+    itunes-search-app/
+    │
+    ├── client/
+    │   ├── public/
+    │   ├── src/
+    │   │   ├── components/
+    │   │   │   └── SearchBar.js
+    │   │   ├── services/
+    │   │   │   └── api.js
+    │   │   ├── App.js
+    │   │   ├── App.css
+    │   │   ├── index.js
+    │   │   └── index.css
+    │   ├── package.json
+    │   └── package-lock.json
+    │
+    ├── server/
+    │   ├── middleware/
+    │   │   └── authMiddleware.js
+    │   ├── routes/
+    │   │   └── searchRoutes.js
+    │   ├── utils/
+    │   │   └── itunesApi.js
+    │   ├── server.js
+    │   ├── package.json
+    │   └── package-lock.json
+    │
+    ├── .gitignore
+    └── README.md
 
 ---
 
@@ -187,21 +187,21 @@ itunes-search-app/
 
 ### 1. Clone the repository
 
-git clone https://github.com/DyllanMeissenheimer23/itunes-search-app.git
+    git clone https://github.com/DyllanMeissenheimer23/itunes-search-app.git
 
 Navigate into the project:
 
-cd itunes-search-app
+    cd itunes-search-app
 
 ### 2. Install backend dependencies
 
 Navigate to the server directory:
 
-cd server
+    cd server
 
 Install the required packages:
 
-npm install
+    npm install
 
 ### 3. Configure environment variables
 
@@ -209,7 +209,7 @@ Inside the server directory, create a file named .env.
 
 Add your JWT secret:
 
-JWT_SECRET=your-secret-key
+    JWT_SECRET=your-secret-key
 
 The .env file is used locally and should not be committed to GitHub.
 
@@ -221,11 +221,11 @@ Open a second terminal window.
 
 Navigate to the client directory:
 
-cd client
+    cd client
 
 Install the required packages:
 
-npm install
+    npm install
 
 ---
 
@@ -237,21 +237,21 @@ The frontend and backend need to run separately.
 
 From the server directory:
 
-npm start
+    npm start
 
 The Express server runs on:
 
-http://localhost:3001
+    http://localhost:3001
 
 ### Start the Frontend
 
 From the client directory:
 
-npm start
+    npm start
 
 The React application runs on:
 
-http://localhost:3000
+    http://localhost:3000
 
 Open the frontend URL in your browser to use the application.
 
@@ -259,23 +259,23 @@ Open the frontend URL in your browser to use the application.
 
 ## 🔄 Application Workflow
 
-1. User enters a search term
-        ↓
-2. User selects a media type
-        ↓
-3. React requests a JWT from Express
-        ↓
-4. React sends the search request with the JWT
-        ↓
-5. Express verifies the JWT
-        ↓
-6. Express requests data from the iTunes Search API
-        ↓
-7. Results are returned to React
-        ↓
-8. Results are displayed to the user
-        ↓
-9. User can add or remove favourites
+    1. User enters a search term
+            ↓
+    2. User selects a media type
+            ↓
+    3. React requests a JWT from Express
+            ↓
+    4. React sends the search request with the JWT
+            ↓
+    5. Express verifies the JWT
+            ↓
+    6. Express requests data from the iTunes Search API
+            ↓
+    7. Results are returned to React
+            ↓
+    8. Results are displayed to the user
+            ↓
+    9. User can add or remove favourites
 
 ---
 
@@ -311,23 +311,23 @@ The Express backend exposes the following routes.
 
 ### Generate JWT
 
-GET /api/token
+    GET /api/token
 
 Generates a short-lived JWT used to authenticate search requests.
 
 ### Search iTunes
 
-GET /api/search
+    GET /api/search
 
 Requires a valid JWT in the Authorization header.
 
 Example:
 
-GET /api/search?term=Coldplay&media=music
+    GET /api/search?term=Coldplay&media=music
 
 Expected authorization format:
 
-Authorization: Bearer <token>
+    Authorization: Bearer <token>
 
 ---
 
@@ -364,7 +364,7 @@ Potential improvements include:
 
 ## 👨‍💻 Author
 
-Dyllan Meissenheimer
+**Dyllan Meissenheimer**
 
 Postgraduate Diploma in Information Technology Management
 
