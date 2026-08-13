@@ -139,8 +139,7 @@ Favourites are stored in the application's React state and are therefore tempora
 
 ---
 
-## 🏗️ Project Structure
-
+```text
 itunes-search-app/
 │
 ├── client/
